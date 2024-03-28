@@ -1,3 +1,4 @@
+  # that it's configured to generate files in the same folder
 Rswag::Api.configure do |c|
 
   # Specify a root folder where Swagger JSON files are located
