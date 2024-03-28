@@ -34,6 +34,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem 'rubocop', require: false
   gem 'rspec'
+  gem 'rspec-rails'
 end
 
 group :development do
