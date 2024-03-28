@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'rswag'
 end
 
 group :development do
