@@ -28,7 +28,7 @@ RSpec.describe 'general_specifications', type: :request do
         properties: {
           release_date: { type: :string },
           general: { type: :string },
-          product_id: {type: :string }
+          product_id: { type: :string }
         },
         required: %w[release_date general product_id]
       }
