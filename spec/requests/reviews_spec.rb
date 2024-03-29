@@ -29,7 +29,7 @@ RSpec.describe 'reviews', type: :request do
           title: { type: :string },
           body: { type: :string },
           rate: { type: :integer },
-          product_id: {type: :string}
+          product_id: { type: :string }
         },
         required: %w[title body rate]
       }
