@@ -27,18 +27,19 @@ RSpec.describe 'general_specifications', type: :request do
         type: :object,
         properties: {
           release_date: { type: :string },
-          general: { type: :string }
+          general: { type: :string },
+          product_id: {type: :string }
         },
-        required: %w[release_date general]
+        required: %w[release_date general product_id]
       }
 
       response '201', 'general specification created' do
-        let(:general_specification) { { release_date: 'foo', general: 'test' } }
+        let(:general_specification) { { release_date: 'foo', general: 'test', product_id: '123' } }
         run_test!
       end
 
       response '422', 'invalid request' do
-        let(:general_specification) { { release_date: 'foo', general: 'test' } }
+        let(:general_specification) { { release_date: 'foo', general: 'test', product_id: '123' } }
         run_test!
       end
       response(200, 'successful') do

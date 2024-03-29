@@ -1,4 +1,4 @@
-class GeneralSpecification
+class GeneralSpecification < Specification
   include Mongoid::Document
   include Mongoid::Timestamps
   field :release_date, type: Date
