@@ -8,15 +8,15 @@ paths:
     get:
       summary: list categories
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     post:
       summary: create category
       tags:
-        - Category
-      parameters: [ ]
+      - Category
+      parameters: []
       responses:
         '201':
           description: category created
@@ -33,40 +33,40 @@ paths:
                 name:
                   type: string
               required:
-                - name
+              - name
   "/categories/{id}":
     parameters:
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     patch:
       summary: update category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     put:
       summary: update category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     delete:
       summary: delete category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
@@ -74,15 +74,15 @@ paths:
     get:
       summary: list products
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     post:
       summary: create product
       tags:
-        - Product
-      parameters: [ ]
+      - Product
+      parameters: []
       responses:
         '201':
           description: product created
@@ -99,40 +99,40 @@ paths:
                 name:
                   type: string
               required:
-                - name
+              - name
   "/products/{id}":
     parameters:
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     patch:
       summary: update product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     put:
       summary: update product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     delete:
       summary: delete product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
@@ -140,15 +140,15 @@ paths:
     get:
       summary: list reviews
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     post:
       summary: create review
       tags:
-        - Review
-      parameters: [ ]
+      - Review
+      parameters: []
       responses:
         '201':
           description: review created
@@ -168,48 +168,50 @@ paths:
                   type: string
                 rate:
                   type: integer
+                product_id:
+                  type: string
               required:
-                - title
-                - body
-                - rate
+              - title
+              - body
+              - rate
   "/reviews/{id}":
     parameters:
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     patch:
       summary: update review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     put:
       summary: update review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     delete:
       summary: delete review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
 servers:
-  - url: http://{defaultHost}
-    variables:
-      defaultHost:
-        default: localhost:3000
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
