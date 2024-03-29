@@ -28,18 +28,19 @@ RSpec.describe 'reviews', type: :request do
         properties: {
           title: { type: :string },
           body: { type: :string },
-          rate: { type: :integer }
+          rate: { type: :integer },
+          product_id: {type: :string}
         },
         required: %w[title body rate]
       }
 
       response '201', 'review created' do
-        let(:review) { { title: 'foo', body: 'test', rate: 1 } }
+        let(:review) { { title: 'foo', body: 'test', rate: 1, product_id: '123' } }
         run_test!
       end
 
       response '422', 'invalid request' do
-        let(:review) { { title: 'foo', body: 'test', rate: 1 } }
+        let(:review) { { title: 'foo', body: 'test', rate: 1, product_id: '123' } }
         run_test!
       end
 
