@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
   private
 
   def set_product
-    @product = Category.find(params[:category_id]).products.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def product_params
