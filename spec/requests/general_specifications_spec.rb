@@ -1,11 +1,11 @@
 require 'swagger_helper'
 
-RSpec.describe 'specifications', type: :request do
+RSpec.describe 'general_specifications', type: :request do
 
-  path '/specifications' do
+  path '/general_specifications' do
 
-    get('list specifications') do
-      tags 'Specification'
+    get('list general_specifications') do
+      tags 'General Specification'
       consumes 'application/json'
       response(200, 'successful') do
 
@@ -20,9 +20,27 @@ RSpec.describe 'specifications', type: :request do
       end
     end
 
-    post('create specification') do
-      tags 'Specification'
+    post('create general_specification') do
+      tags 'General Specification'
       consumes 'application/json'
+      parameter name: :general_specification, in: :body, schema: {
+        type: :object,
+        properties: {
+          release_date: { type: :string },
+          general: { type: :string }
+        },
+        required: %w[release_date general]
+      }
+
+      response '201', 'general specification created' do
+        let(:general_specification) { { release_date: 'foo', general: 'test' } }
+        run_test!
+      end
+
+      response '422', 'invalid request' do
+        let(:general_specification) { { release_date: 'foo', general: 'test' } }
+        run_test!
+      end
       response(200, 'successful') do
 
         after do |example|
@@ -37,11 +55,11 @@ RSpec.describe 'specifications', type: :request do
     end
   end
 
-  path '/specifications/{id}' do
+  path '/general_specifications/{id}' do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
-    get('show specification') do
-      tags 'Specification'
+    get('show general_specification') do
+      tags 'General Specification'
       consumes 'application/json'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -57,8 +75,8 @@ RSpec.describe 'specifications', type: :request do
       end
     end
 
-    patch('update specification') do
-      tags 'Specification'
+    patch('update general_specification') do
+      tags 'General Specification'
       consumes 'application/json'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -74,8 +92,8 @@ RSpec.describe 'specifications', type: :request do
       end
     end
 
-    put('update specification') do
-      tags 'Specification'
+    put('update general_specification') do
+      tags 'General Specification'
       consumes 'application/json'
       response(200, 'successful') do
         let(:id) { '123' }
@@ -91,8 +109,8 @@ RSpec.describe 'specifications', type: :request do
       end
     end
 
-    delete('delete specification') do
-      tags 'Specification'
+    delete('delete general_specification') do
+      tags 'General Specification'
       consumes 'application/json'
       response(200, 'successful') do
         let(:id) { '123' }
