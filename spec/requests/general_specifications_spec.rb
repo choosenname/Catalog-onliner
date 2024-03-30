@@ -2,7 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'general_specifications', type: :request do
 
-  path '/general_specifications' do
+  path '/products/{id}/general_specifications' do
+    parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('list general_specifications') do
       tags 'General Specification'
@@ -27,19 +28,18 @@ RSpec.describe 'general_specifications', type: :request do
         type: :object,
         properties: {
           release_date: { type: :string },
-          general: { type: :string },
-          product_id: { type: :string }
+          general: { type: :string }
         },
-        required: %w[release_date general product_id]
+        required: %w[release_date general]
       }
 
       response '201', 'general specification created' do
-        let(:general_specification) { { release_date: 'foo', general: 'test', product_id: '123' } }
+        let(:general_specification) { { release_date: 'foo', general: 'test'} }
         run_test!
       end
 
       response '422', 'invalid request' do
-        let(:general_specification) { { release_date: 'foo', general: 'test', product_id: '123' } }
+        let(:general_specification) { { release_date: 'foo', general: 'test'} }
         run_test!
       end
       response(200, 'successful') do

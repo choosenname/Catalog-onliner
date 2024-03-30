@@ -1,8 +1,9 @@
 class SpecificationsController < ApplicationController
   before_action :set_specification, only: %i[ show update destroy ]
+  before_action :set_product
 
   def index
-    @specifications = Specification.all
+    @specifications = @product.specifications.all
 
     render json: @specifications
   end
@@ -25,6 +26,10 @@ class SpecificationsController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 
   def set_specification
     @specification = Specification.find(params[:id])

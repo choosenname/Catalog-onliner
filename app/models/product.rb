@@ -3,7 +3,7 @@ class Product
   include Mongoid::Timestamps
   field :name, type: String
 
-  embeds_one :general_specifications
+  embeds_many :specifications
   has_many :reviews, dependent: :destroy
   belongs_to :category
 end
