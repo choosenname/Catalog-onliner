@@ -34,12 +34,12 @@ RSpec.describe 'general_specifications', type: :request do
       }
 
       response '201', 'general specification created' do
-        let(:general_specification) { { release_date: 'foo', general: 'test'} }
+        let(:general_specification) { { release_date: 'foo', general: 'test' } }
         run_test!
       end
 
       response '422', 'invalid request' do
-        let(:general_specification) { { release_date: 'foo', general: 'test'} }
+        let(:general_specification) { { release_date: 'foo', general: 'test' } }
         run_test!
       end
       response(200, 'successful') do

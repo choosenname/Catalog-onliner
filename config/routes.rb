@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :reviews
   resources :products do
-  resources :specifications
-  resources :general_specifications
+    resources :specifications
+    resources :general_specifications
   end
   resources :categories
   mount Rswag::Ui::Engine => '/api-docs'
