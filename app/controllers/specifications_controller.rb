@@ -1,6 +1,6 @@
 class SpecificationsController < ApplicationController
   before_action :set_specification, only: %i[ show update destroy ]
-  before_action :set_product
+  before_action :set_product, only: %i[ index create ]
 
   def index
     @specifications = @product.specifications.all
@@ -32,6 +32,6 @@ class SpecificationsController < ApplicationController
   end
 
   def set_specification
-    @specification = Specification.find(params[:id])
+    @specification = Product.find(params[:product_id]).specifications.find(params[:id])
   end
 end
