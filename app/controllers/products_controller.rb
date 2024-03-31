@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show update destroy ]
+  before_action :set_product, only: %i[show update destroy]
+  before_action :set_category, only: %i[index create]
 
   def index
-    @products = Product.all
+    @products = @category.products.all
 
     render json: @products
   end
@@ -13,9 +14,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.category_id = params[:category_id]
 
     if @product.save
-      render json: @product, status: :created, location: @product
+      render json: @product, status: :created, location: category_product_url(@category, @product)
     else
       render json: @product.errors, status: :unprocessable_entity
     end
@@ -36,8 +38,12 @@ class ProductsController < ApplicationController
 
   private
 
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
+
   def set_product
-    @product = Product.find(params[:id])
+    @product = Category.find(params[:category_id]).products.find(params[:id])
   end
 
   def product_params
