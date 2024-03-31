@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   resources :categories do
     resources :products do
       resources :general_specifications
+      resources :reviews
     end
   end
-      resources :reviews
   # resources :specifications
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'

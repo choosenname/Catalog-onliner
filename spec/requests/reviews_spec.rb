@@ -2,7 +2,9 @@ require 'swagger_helper'
 
 RSpec.describe 'reviews', type: :request do
 
-  path '/reviews' do
+  path '/categories/{category_id}/products/{product_id}/reviews' do
+    parameter name: 'category_id', in: :path, type: :string, description: 'category_id'
+    parameter name: 'product_id', in: :path, type: :string, description: 'product_id'
 
     get('list reviews') do
       tags 'Review'
@@ -58,7 +60,9 @@ RSpec.describe 'reviews', type: :request do
     end
   end
 
-  path '/reviews/{id}' do
+  path '/categories/{category_id}/products/{product_id}/reviews/{id}' do
+    parameter name: 'category_id', in: :path, type: :string, description: 'category_id'
+    parameter name: 'product_id', in: :path, type: :string, description: 'product_id'
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show review') do

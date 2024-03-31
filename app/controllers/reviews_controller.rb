@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[ show update destroy ]
+  before_action :set_review, only: %i[show update destroy]
+  before_action :set_product, only: %i[index create]
+  before_action :set_category, only: %i[create]
 
   def index
-    @reviews = Review.all
+    @reviews = @product.reviews.all
 
     render json: @reviews
   end
@@ -13,9 +15,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.product = params[:product_id]
 
     if @review.save
-      render json: @review, status: :created, location: @review
+      render json: @review, status: :created,
+             location: category_product_review_url(@category, @product, @review)
     else
       render json: @review.errors, status: :unprocessable_entity
     end
@@ -36,11 +40,21 @@ class ReviewsController < ApplicationController
 
   private
 
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  def set_product
+    @product = Category.find(params[:category_id]).products.find(params[:product_id])
+  end
+
   def set_review
-    @review = Review.find(params[:id])
+    @review = Category.find(params[:category_id])
+                      .products.find(params[:product_id])
+                      .reviews.find(params[:id])
   end
 
   def review_params
-    params.require(:review).permit(:title, :body, :rate, :product_id)
+    params.require(:review).permit(:title, :body, :rate)
   end
 end
