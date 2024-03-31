@@ -41,7 +41,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
   end
 
   def set_product

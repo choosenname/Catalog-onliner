@@ -8,15 +8,15 @@ paths:
     get:
       summary: list categories
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     post:
       summary: create category
       tags:
-        - Category
-      parameters: [ ]
+      - Category
+      parameters: []
       responses:
         '201':
           description: category created
@@ -33,69 +33,69 @@ paths:
                 name:
                   type: string
               required:
-                - name
+              - name
   "/categories/{id}":
     parameters:
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     patch:
       summary: update category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     put:
       summary: update category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
     delete:
       summary: delete category
       tags:
-        - Category
+      - Category
       responses:
         '200':
           description: successful
   "/categories/{category_id}/products/{product_id}/general_specifications":
     parameters:
-      - name: category_id
-        in: path
-        description: category_id
-        required: true
-        schema:
-          type: string
-      - name: product_id
-        in: path
-        description: product_id
-        required: true
-        schema:
-          type: string
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
+    - name: product_id
+      in: path
+      description: product_id
+      required: true
+      schema:
+        type: string
     get:
       summary: list general_specifications
       tags:
-        - General Specification
+      - General Specification
       responses:
         '200':
           description: successful
     post:
       summary: create general_specification
       tags:
-        - General Specification
-      parameters: [ ]
+      - General Specification
+      parameters: []
       responses:
         '201':
           description: general specification created
@@ -114,76 +114,76 @@ paths:
                 general:
                   type: string
               required:
-                - release_date
-                - general
+              - release_date
+              - general
   "/categories/{category_id}/products/{product_id}/general_specifications/{id}":
     parameters:
-      - name: category_id
-        in: path
-        description: category_id
-        required: true
-        schema:
-          type: string
-      - name: product_id
-        in: path
-        description: product_id
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
+    - name: product_id
+      in: path
+      description: product_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show general_specification
       tags:
-        - General Specification
+      - General Specification
       responses:
         '200':
           description: successful
     patch:
       summary: update general_specification
       tags:
-        - General Specification
+      - General Specification
       responses:
         '200':
           description: successful
     put:
       summary: update general_specification
       tags:
-        - General Specification
+      - General Specification
       responses:
         '200':
           description: successful
     delete:
       summary: delete general_specification
       tags:
-        - General Specification
+      - General Specification
       responses:
         '200':
           description: successful
   "/categories/{category_id}/products":
     parameters:
-      - name: category_id
-        in: path
-        description: category_id
-        required: true
-        schema:
-          type: string
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
     get:
       summary: list products
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     post:
       summary: create product
       tags:
-        - Product
-      parameters: [ ]
+      - Product
+      parameters: []
       responses:
         '201':
           description: product created
@@ -200,62 +200,75 @@ paths:
                 name:
                   type: string
               required:
-                - name
+              - name
   "/categories/{category_id}/products/{id}":
     parameters:
-      - name: category_id
-        in: path
-        description: category_id
-        required: true
-        schema:
-          type: string
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     patch:
       summary: update product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     put:
       summary: update product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
     delete:
       summary: delete product
       tags:
-        - Product
+      - Product
       responses:
         '200':
           description: successful
-  "/reviews":
+  "/categories/{category_id}/products/{product_id}/reviews":
+    parameters:
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
+    - name: product_id
+      in: path
+      description: product_id
+      required: true
+      schema:
+        type: string
     get:
       summary: list reviews
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     post:
       summary: create review
       tags:
-        - Review
-      parameters: [ ]
+      - Review
+      parameters: []
       responses:
         '201':
           description: review created
@@ -275,50 +288,60 @@ paths:
                   type: string
                 rate:
                   type: integer
-                product_id:
-                  type: string
               required:
-                - title
-                - body
-                - rate
-  "/reviews/{id}":
+              - title
+              - body
+              - rate
+  "/categories/{category_id}/products/{product_id}/reviews/{id}":
     parameters:
-      - name: id
-        in: path
-        description: id
-        required: true
-        schema:
-          type: string
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
+    - name: product_id
+      in: path
+      description: product_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
     get:
       summary: show review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     patch:
       summary: update review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     put:
       summary: update review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
     delete:
       summary: delete review
       tags:
-        - Review
+      - Review
       responses:
         '200':
           description: successful
 servers:
-  - url: http://{defaultHost}
-    variables:
-      defaultHost:
-        default: localhost:3000
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
