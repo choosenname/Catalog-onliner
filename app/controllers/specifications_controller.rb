@@ -28,10 +28,12 @@ class SpecificationsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find(params[:product_id])
+    @product = Category.find(params[:category_id]).products.find(params[:product_id])
   end
 
   def set_specification
-    @specification = Product.find(params[:product_id]).specifications.find(params[:id])
+    @specification = Category.find(params[:category_id])
+                             .products.find(params[:product_id])
+                             .specifications.find(params[:id])
   end
 end

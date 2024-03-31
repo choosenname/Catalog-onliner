@@ -70,8 +70,14 @@ paths:
       responses:
         '200':
           description: successful
-  "/products/{product_id}/general_specifications":
+  "/categories/{category_id}/products/{product_id}/general_specifications":
     parameters:
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
     - name: product_id
       in: path
       description: product_id
@@ -110,8 +116,14 @@ paths:
               required:
               - release_date
               - general
-  "/products/{product_id}/general_specifications/{id}":
+  "/categories/{category_id}/products/{product_id}/general_specifications/{id}":
     parameters:
+    - name: category_id
+      in: path
+      description: category_id
+      required: true
+      schema:
+        type: string
     - name: product_id
       in: path
       description: product_id

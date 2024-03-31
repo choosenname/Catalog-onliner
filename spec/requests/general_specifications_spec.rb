@@ -2,7 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'general_specifications', type: :request do
 
-  path '/products/{product_id}/general_specifications' do
+  path '/categories/{category_id}/products/{product_id}/general_specifications' do
+    parameter name: 'category_id', in: :path, type: :string, description: 'category_id'
     parameter name: 'product_id', in: :path, type: :string, description: 'product_id'
 
     get('list general_specifications') do
@@ -56,7 +57,8 @@ RSpec.describe 'general_specifications', type: :request do
     end
   end
 
-  path '/products/{product_id}/general_specifications/{id}' do
+  path '/categories/{category_id}/products/{product_id}/general_specifications/{id}' do
+    parameter name: 'category_id', in: :path, type: :string, description: 'category_id'
     parameter name: 'product_id', in: :path, type: :string, description: 'product_id'
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
