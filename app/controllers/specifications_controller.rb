@@ -21,11 +21,11 @@ class SpecificationsController < ApplicationController
   private
 
   def set_product
-    @product = Category.find(params[:category_id]).products.find(params[:product_id])
+    @product = Category.find_by(name: params[:category_name]).products.find(params[:product_id])
   end
 
   def set_specification
-    @specification = Category.find(params[:category_id])
+    @specification = Category.find_by(name: params[:category_name])
                              .products.find(params[:product_id])
                              .specifications.find(params[:id])
   end

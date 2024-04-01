@@ -41,11 +41,11 @@ class ReviewsController < ApplicationController
   private
 
   def set_product
-    @product = Category.find(params[:category_id]).products.find(params[:product_id])
+    @product = Category.find_by(name: params[:category_name]).products.find(params[:product_id])
   end
 
   def set_review
-    @review = Category.find(params[:category_id])
+    @review = Category.find_by(name: params[:category_name])
                       .products.find(params[:product_id])
                       .reviews.find(params[:id])
   end
