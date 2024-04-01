@@ -3,7 +3,7 @@ class Category
   include Mongoid::Timestamps
 
   field :name, type: String
-  field :_id, type: String, default: -> { name }
+  validates :name, presence: true, uniqueness: true
 
   has_many :products, dependent: :destroy
 end

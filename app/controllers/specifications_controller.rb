@@ -1,7 +1,7 @@
 class SpecificationsController < ApplicationController
   before_action :set_specification, only: %i[show update destroy]
   before_action :set_product, only: %i[index create]
-  before_action :set_category, only: %i[create]
+  include Categoryable
 
   def index
     @specifications = @product.specifications.all
@@ -19,10 +19,6 @@ class SpecificationsController < ApplicationController
   end
 
   private
-
-  def set_category
-    @category = Category.find(params[:id])
-  end
 
   def set_product
     @product = Category.find(params[:category_id]).products.find(params[:product_id])

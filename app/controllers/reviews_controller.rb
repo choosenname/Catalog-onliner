@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show update destroy]
   before_action :set_product, only: %i[index create]
-  before_action :set_category, only: %i[create]
+  include Categoryable
 
   def index
     @reviews = @product.reviews.all
@@ -39,10 +39,6 @@ class ReviewsController < ApplicationController
   end
 
   private
-
-  def set_category
-    @category = Category.find(params[:category_id])
-  end
 
   def set_product
     @product = Category.find(params[:category_id]).products.find(params[:product_id])
