@@ -84,6 +84,15 @@ RSpec.describe 'reviews', type: :request do
     patch('update review') do
       tags 'Review'
       consumes 'application/json'
+      parameter name: :review, in: :body, schema: {
+        type: :object,
+        properties: {
+          title: { type: :string },
+          body: { type: :string },
+          rate: { type: :integer }
+        }
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -101,6 +110,16 @@ RSpec.describe 'reviews', type: :request do
     put('update review') do
       tags 'Review'
       consumes 'application/json'
+      parameter name: :review, in: :body, schema: {
+        type: :object,
+        properties: {
+          title: { type: :string },
+          body: { type: :string },
+          rate: { type: :integer }
+        },
+        required: %w[title body rate]
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 
