@@ -8,6 +8,6 @@ module Categoryable
   private
 
   def set_category
-    @category = Category.find(params[:category_name])
+    @category = Category.find_by(name: params[:category_name])
   end
 end
