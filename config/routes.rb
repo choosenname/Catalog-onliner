@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :categories do
+  resources :categories, param: :name do
     resources :products do
       resources :general_specifications
       resources :reviews

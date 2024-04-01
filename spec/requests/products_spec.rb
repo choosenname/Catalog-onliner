@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'products', type: :request do
 
-  path '/categories/{category_id}/products' do
-    parameter name: 'category_id', in: :path, type: :string, description: 'category_id'
+  path '/categories/{category_name}/products' do
+    parameter name: 'category_name', in: :path, type: :string, description: 'category_name'
 
     get('list products') do
       tags 'Product'
@@ -56,8 +56,8 @@ RSpec.describe 'products', type: :request do
     end
   end
 
-  path '/categories/{category_id}/products/{id}' do
-    parameter name: 'category_id', in: :path, type: :string, description: 'category_id'
+  path '/categories/{category_name}/products/{id}' do
+    parameter name: 'category_name', in: :path, type: :string, description: 'category_name'
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show product') do
