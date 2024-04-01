@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.category = params[:category_id]
+    @product.category = @category._id
 
     if @product.save
       render json: @product, status: :created, location: category_product_url(@category, @product)
