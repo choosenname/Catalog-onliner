@@ -80,6 +80,13 @@ RSpec.describe 'products', type: :request do
     patch('update product') do
       tags 'Product'
       consumes 'application/json'
+      parameter name: :product, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string }
+        }
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -97,6 +104,14 @@ RSpec.describe 'products', type: :request do
     put('update product') do
       tags 'Product'
       consumes 'application/json'
+      parameter name: :product, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string }
+        },
+        required: ['name']
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 
