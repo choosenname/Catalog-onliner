@@ -136,6 +136,80 @@ paths:
       responses:
         '200':
           description: successful
+  "/reviews":
+    get:
+      summary: list reviews
+      tags:
+        - Review
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create review
+      tags:
+        - Review
+      parameters: [ ]
+      responses:
+        '201':
+          description: review created
+        '422':
+          description: invalid request
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                rate:
+                  type: integer
+                product_id:
+                  type: string
+              required:
+                - title
+                - body
+                - rate
+  "/reviews/{id}":
+    parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: show review
+      tags:
+        - Review
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update review
+      tags:
+        - Review
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update review
+      tags:
+        - Review
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete review
+      tags:
+        - Review
+      responses:
+        '200':
+          description: successful
 servers:
   - url: http://{defaultHost}
     variables:

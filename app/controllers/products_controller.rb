@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    render json: @product
+    render json: @product, include: :reviews
   end
 
   def create
