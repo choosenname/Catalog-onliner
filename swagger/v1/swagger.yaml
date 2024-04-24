@@ -70,6 +70,90 @@ paths:
       responses:
         '200':
           description: successful
+
+  "/products/{product_id}/general_specifications":
+    parameters:
+      - name: product_id
+        in: path
+        description: product_id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: list general_specifications
+      tags:
+        - General Specification
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create general_specification
+      tags:
+        - General Specification
+      parameters: [ ]
+      responses:
+        '201':
+          description: general specification created
+        '422':
+          description: invalid request
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                release_date:
+                  type: string
+                general:
+                  type: string
+              required:
+                - release_date
+                - general
+  "/products/{product_id}/general_specifications/{id}":
+    parameters:
+      - name: product_id
+        in: path
+        description: product_id
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: show general_specification
+      tags:
+        - General Specification
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update general_specification
+      tags:
+        - General Specification
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update general_specification
+      tags:
+        - General Specification
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete general_specification
+      tags:
+        - General Specification
+      responses:
+        '200':
+          description: successful
+
   "/products":
     get:
       summary: list products
