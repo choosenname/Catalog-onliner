@@ -2,7 +2,9 @@ require 'swagger_helper'
 
 RSpec.describe 'reviews', type: :request do
 
-  path '/reviews' do
+  path '/categories/{category_name}/products/{product_id}/reviews' do
+    parameter name: 'category_name', in: :path, type: :string, description: 'category_name'
+    parameter name: 'product_id', in: :path, type: :string, description: 'product_id'
 
     get('list reviews') do
       tags 'Review'
@@ -28,8 +30,7 @@ RSpec.describe 'reviews', type: :request do
         properties: {
           title: { type: :string },
           body: { type: :string },
-          rate: { type: :integer },
-          product_id: { type: :string }
+          rate: { type: :integer }
         },
         required: %w[title body rate]
       }
@@ -58,7 +59,9 @@ RSpec.describe 'reviews', type: :request do
     end
   end
 
-  path '/reviews/{id}' do
+  path '/categories/{category_name}/products/{product_id}/reviews/{id}' do
+    parameter name: 'category_name', in: :path, type: :string, description: 'category_name'
+    parameter name: 'product_id', in: :path, type: :string, description: 'product_id'
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show review') do

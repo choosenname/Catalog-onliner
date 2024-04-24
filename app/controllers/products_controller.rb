@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show update destroy ]
+  before_action :set_product, only: %i[show update destroy]
+  include Categoryable
+
 
   def index
-    @products = Product.all
+    @products = @category.products.all
 
     render json: @products
   end
@@ -13,9 +15,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.category = @category._id
 
     if @product.save
-      render json: @product, status: :created, location: @product
+      render json: @product, status: :created, location: category_product_url(@category, @product)
     else
       render json: @product.errors, status: :unprocessable_entity
     end

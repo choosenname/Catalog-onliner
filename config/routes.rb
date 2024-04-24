@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :reviews
-  
-  resources :products do
-    resources :specifications
-    resources :general_specifications
-  resources :categories
+  resources :categories, param: :name do
+    resources :products do
+      resources :general_specifications
+      resources :reviews
+    end
+  end
+  # resources :specifications
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

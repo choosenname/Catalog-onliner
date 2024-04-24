@@ -53,8 +53,8 @@ RSpec.describe 'categories', type: :request do
     end
   end
 
-  path '/categories/{id}' do
-    parameter name: 'id', in: :path, type: :string, description: 'id'
+  path '/categories/{name}' do
+    parameter name: 'name', in: :path, type: :string, description: 'name'
 
     get('show category') do
       tags 'Category'
@@ -76,6 +76,14 @@ RSpec.describe 'categories', type: :request do
     patch('update category') do
       tags 'Category'
       consumes 'application/json'
+      parameter name: :category, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string }
+        },
+        required: ['name']
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -93,6 +101,14 @@ RSpec.describe 'categories', type: :request do
     put('update category') do
       tags 'Category'
       consumes 'application/json'
+      parameter name: :category, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string }
+        },
+        required: ['name']
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 

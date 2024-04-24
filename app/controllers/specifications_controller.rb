@@ -1,6 +1,7 @@
 class SpecificationsController < ApplicationController
-  before_action :set_specification, only: %i[ show update destroy ]
-  before_action :set_product, only: %i[ index create ]
+  before_action :set_specification, only: %i[show update destroy]
+  before_action :set_product, only: %i[index create]
+  include Categoryable
 
   def index
     @specifications = @product.specifications.all
@@ -12,14 +13,6 @@ class SpecificationsController < ApplicationController
     render json: @specification
   end
 
-  def update
-    if @specification.update(specification_params)
-      render json: @specification
-    else
-      render json: @specification.errors, status: :unprocessable_entity
-    end
-  end
-
   def destroy
     @specification.destroy
     head :no_content
@@ -28,10 +21,12 @@ class SpecificationsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find(params[:product_id])
+    @product = Category.find_by(name: params[:category_name]).products.find(params[:product_id])
   end
 
   def set_specification
-    @specification = Product.find(params[:product_id]).specifications.find(params[:id])
+    @specification = Category.find_by(name: params[:category_name])
+                             .products.find(params[:product_id])
+                             .specifications.find(params[:id])
   end
 end
