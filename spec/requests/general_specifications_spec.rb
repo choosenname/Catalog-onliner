@@ -82,6 +82,14 @@ RSpec.describe 'general_specifications', type: :request do
     patch('update general_specification') do
       tags 'General Specification'
       consumes 'application/json'
+      parameter name: :general_specification, in: :body, schema: {
+        type: :object,
+        properties: {
+          release_date: { type: :string },
+          general: { type: :string }
+        }
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -99,6 +107,15 @@ RSpec.describe 'general_specifications', type: :request do
     put('update general_specification') do
       tags 'General Specification'
       consumes 'application/json'
+      parameter name: :general_specification, in: :body, schema: {
+        type: :object,
+        properties: {
+          release_date: { type: :string },
+          general: { type: :string }
+        },
+        required: %w[release_date general]
+      }
+
       response(200, 'successful') do
         let(:id) { '123' }
 

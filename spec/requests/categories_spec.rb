@@ -80,8 +80,7 @@ RSpec.describe 'categories', type: :request do
         type: :object,
         properties: {
           name: { type: :string }
-        },
-        required: ['name']
+        }
       }
 
       response(200, 'successful') do
